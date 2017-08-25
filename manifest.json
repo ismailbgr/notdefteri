@@ -1,0 +1,13 @@
+{
+  "name": " ",
+  "short_name": " ",
+  "lang": "tr",
+  "start_url": "https://ismailbgr.github.io/notdefreri",
+  "display": "standalone",
+  "theme_color": "#f44336",
+  "icons": [
+    {
+      "src": "https://ismailbgr.github.io/notdefteri/icon.png"
+    }
+  ]
+}
