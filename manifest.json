@@ -1,8 +1,8 @@
 {
-  "name": " ",
-  "short_name": " ",
+  "name": "Þifreli Not Defteri",
+  "short_name": "Not Defteri",
   "lang": "tr",
-  "start_url": "https://ismailbgr.github.io/notdefreri",
+  "start_url": "https://ismailbgr.github.io/notdefteri",
   "display": "standalone",
   "theme_color": "#f44336",
   "icons": [
