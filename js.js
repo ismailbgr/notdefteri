@@ -37,12 +37,26 @@ if(getsifre == localStorage.sifre){
 
 }
 
+function jqalert(text){
+	var jqalerttextarea = document.createElement("p")
+jqalerttextarea.setAttribute("class","gizli")	
+jqalerttextarea.setAttribute("id","jqalerttextarea")
+document.body.appendChild(jqalerttextarea)
+document.getElementById("jqalerttextarea").innerHTML = "<h2>"+text+"</h2>"
+$("#jqalerttextarea").dialog();
+}
+
+
 function save(){
 	localStorage.setItem("yazi",document.getElementById("text").value)
-	alert("Kaydedildi")
+	jqalert("Kaydedildi")
 }
 
 function sifrekoy(){
-	localStorage.setItem("sifre",prompt("Şifre Ne Olsun?"))
-alert("Şifre Ayarlandı")
+	var sifre = prompt("Şifre Ne Olsun?");
+	if(sifre !== null){
+	localStorage.setItem("sifre",sifre)
+	jqalert("Şifre Ayarlandı")
+	}
+
 	}
