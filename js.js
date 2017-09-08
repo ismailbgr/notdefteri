@@ -1,4 +1,11 @@
 ﻿window.onload=function(){
+	if(location.hash == "#nopass"){
+		document.getElementById("save").disabled = true;
+		document.getElementById("save").innerHTML += "(Disabled)(NoPass Mode)"
+		document.getElementById("addpass").disabled = true;
+		document.getElementById("addpass").innerHTML += "(Disabled)(NoPass Mode)"
+		document.getElementById("text").innerHTML = "(NoPass Mode)"
+	}else{
 	localStorage
 	if(localStorage.sifre == undefined){
 localStorage.setItem("sifre",prompt("Şifre Ne Olsun?"))
@@ -11,7 +18,7 @@ if(getsifre == localStorage.sifre){
 	location.reload()
 }	
 }
-	
+	}
 	var cacheStatus = document.getElementById("cachestatus")
 	if (navigator.onLine) {
         window.applicationCache.addEventListener('updateready', function(e) {
