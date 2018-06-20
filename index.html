@@ -1,35 +1,216 @@
-﻿<html manifest="cache.manifest">
+<!DOCTYPE html>
+<html>
 <head>
-<title>Not Defteri</title>
+
+
 <link rel="manifest" href="manifest.json">
 
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="application-name" content="Not Defteri">
-<meta name="apple-mobile-web-app-title" content="Not Defteri">
-<meta name="theme-color" content="#f44336">
-<meta name="msapplication-navbutton-color" content="#f44336">
+<meta name="application-name" content="ŞNot Defteri">
+<meta name="apple-mobile-web-app-title" content="ŞNot Defteri">
+<meta name="theme-color" content="#24f764">
+<meta name="msapplication-navbutton-color" content="#24f764">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="msapplication-starturl" content="https://ismailbgr.github.io/notdefteri">
+<meta name="msapplication-starturl" content="/notdefteri">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<link rel="icon" href="https://ismailbgr.github.io/notdefteri/icon.png">
-<link rel="apple-touch-icon" href="https://ismailbgr.github.io/notdefteri/icon.png">
-<link rel="stylesheet" type="text/css" href="css.css">
-<link rel="stylesheet" type="text/css" href="jquery-ui.css">
-<script src="js.js"></script>
-<script src="jquery.js"></script>
-<script src="jquery-ui.js"></script>
+<link rel="icon" href="icon.png">
+<link rel="apple-touch-icon" href="icon.png">
+
+
+
+
+
+
+
+
+
+	<title>Not Defteri</title>
+<style type="text/css">
+
+.gizli{
+	display: none !important;
+}
+
+body{
+
+	text-align: center;
+	
+	background:linear-gradient(0deg, #0098ff, #24f764) fixed;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+}
+
+#notes{
+	border:solid 3px rgba(0,0,0,.3);
+	padding: 10px;
+	border-radius: 10px;
+	font-family: Arial , serif;
+	font-size: 36px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+	.note{
+background:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0),rgba(0,0,0,0.5));
+text-align: center;
+border-top: solid 1px gray;
+border-bottom: solid 1px gray;
+border-radius: 10px;
+width: 100%;
+margin: 0px;
+padding: 0px;
+	}
+
+	textarea{
+		font-size:36px
+	}
+</style>
 </head>
 <body>
-<h1>Not Defteri</h1>
-<p id="cachestatus" onclick="location.reload(true);"></p>
-<div style="padding:30px;">
-<button id="save" onclick="save()">Kaydet</button>
-<button id="addpass" onclick="sifrekoy()">Şifre Koy/Değiştir</button>
+<script type="text/javascript">
+
+	if('serviceWorker' in navigator) {
+  navigator.serviceWorker
+           .register('/sw.js')
+           .then(function() { console.log("Service Worker Kaydettirildi!!!"); });
+
+}
+
+</script>
+	<h1>Not Defteri</h1>
+	<button onclick="add()">+</button>
+	<button onclick="setPass()">Şifre Koy/Kaldır/Değiştir</button>
+<div class="content">
+<div id="notes">
+	
 </div>
-<div>
-<textarea rows="40" id="text"></textarea>
+
+<div id="edit" class="gizli">
+<div style="display: flex;justify-content: space-between;margin: 10px;">
+<button style="width: 100%;" onclick="closenote()">Kapat</button>
+<button style="width: 100%;" onclick="save()">Kaydet</button>
+<button style="width: 100%;" onclick="deletenote()">Sil</button>
 </div>
+<textarea id="txtbox" rows="10" style="width: 90%"></textarea></br>
+</div>
+
+</div>
+</div>
+<script type="text/javascript">
+	if (localStorage.NDPass == undefined) {} else {
+		var pass = prompt("Şifre")
+		if(pass == localStorage.NDPass){
+
+		}else{
+			location.reload();
+		}
+	}
+
+	var currentNote;
+	var notesarray = JSON.parse(localStorage.getItem('NDNotes'))
+	const notesdiv = document.getElementById('notes');
+
+
+if(notesarray == null){
+	notesarray = [];
+}
+
+
+if(notesarray.length == 0){
+	notesdiv.innerHTML = "Not Bulunamadı"
+}
+
+
+	for (var i = notesarray.length - 1; i >= 0; i--) {
+	
+	
+
+		notesdiv.innerHTML = notesdiv.innerHTML + "<a class='note' onclick='opennote("+ i + ")'>" + notesarray[i].title + "</a></br>"
+	
+
+	}
+
+
+
+
+
+function setPass() {
+	if (localStorage.NDPass != undefined) {
+	var nowpass = prompt("Şu Anki Şifrenizi Giriniz")
+	if (nowpass == localStorage.NDPass) {
+	var setpass = prompt("Şifreniz Ne Olsun ? \n(Eğer Şifreyi Kaldırmak İstiyorsanız Boş Bırakın)",localStorage.NDPass)
+	if(setpass == ""){
+		localStorage.removeItem("NDPass");
+		alert("Şifre Kaldırıldı")
+	}else if(setpass == null){
+
+	}else{
+		localStorage.NDPass = setpass;
+		alert("Şifreniz Değiştirilmiştir")
+	}
+}else{
+alert("Yanlış Şifre");
+}
+}else{
+	var setpass = prompt("Şifreniz Ne Olsun ? \n(Eğer Şifreyi Kaldırmak İstiyorsanız Boş Bırakın)",localStorage.NDPass)
+	if(setpass == ""){
+		localStorage.removeItem("NDPass");
+		alert("Şifre Kaldırıldı")
+	}else if(setpass == null){
+
+	}else{
+		localStorage.NDPass = setpass;
+		alert("Şifreniz Değiştirilmiştir")
+	}
+}
+}
+
+function closenote(argument) {
+	document.getElementById("edit").classList.add("gizli")
+	document.getElementById("notes").classList.remove("gizli")
+	
+}
+
+function opennote(argument) {
+	document.getElementById("edit").classList.remove("gizli")
+	document.getElementById("notes").classList.add("gizli")
+	document.getElementById('txtbox').value = notesarray[argument].content;
+	currentNote = argument;
+}
+
+function deletenote(){
+	if(confirm("Silmek İstediğinize Emin Misiniz ?")){
+	notesarray.splice(currentNote, 1);
+	localStorage.NDNotes = JSON.stringify(notesarray);
+	closenote();
+	refresh()
+}
+}
+
+function save(argument) {
+	notesarray[currentNote].content = document.getElementById('txtbox').value;
+	localStorage.NDNotes = JSON.stringify(notesarray);
+	alert("Kaydedildi")
+}
+function add(argument) {
+	var title = prompt("Not Başlığı")
+	if(title != null){
+	notesarray.push({title:title,content:""})
+	localStorage.NDNotes = JSON.stringify(notesarray);
+	refresh();}
+}
+
+function refresh(argument) {
+	notesdiv.innerHTML = ""
+
+	for (var i = notesarray.length - 1; i >= 0; i--) {
+		
+		notesdiv.innerHTML = notesdiv.innerHTML + "<a class='note' onclick='opennote("+ i + ")'>" + notesarray[i].title + "</a></br>"
+	}
+}
+</script>
 </body>
 </html>

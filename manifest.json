@@ -1,13 +1,16 @@
-﻿{
+{
   "name": "Şifreli Not Defteri",
-  "short_name": "Not Defteri",
-  "lang": "tr",
-  "start_url": "https://ismailbgr.github.io/notdefteri",
+  "short_name": "ŞNot Defteri",
+  "description": "Şifrelenmiş Bir Not Defteri",
+  "lang": "tr-TR",
+  "start_url": "/notdefteri",
   "display": "standalone",
-  "theme_color": "#f44336",
+  "theme_color": "#24f764",
   "icons": [
     {
-      "src": "https://ismailbgr.github.io/notdefteri/icon.png"
+      "src": "icon.png",
+      "sizes": "512x512"
     }
-  ]
+  ],
+  "background_color": "#24f764"
 }
