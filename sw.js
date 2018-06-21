@@ -1,14 +1,14 @@
-const expectedCaches = ['ibgr-notdefteri-v0.0.1'];
+const expectedCaches = ['ibgr-notdefteri-v0.1'];
 
 self.addEventListener('install', function(e) {
   self.skipWaiting();
  e.waitUntil(
    caches.open('ibgr-notdefteri-v0.1').then(function(cache) {
      return cache.addAll([
-       '/',
-       '/index.html',
-       '/manifest.json',
-       '/icon.png'
+       '/notdefteri/',
+       '/notdefteri/index.html',
+       '/notdefteri/manifest.json',
+       '/notdefteri/icon.png'
      ]);
    })
  );
