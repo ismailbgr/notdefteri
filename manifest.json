@@ -8,7 +8,7 @@
   "theme_color": "#24f764",
   "icons": [
     {
-      "src": "icon.png",
+      "src": "/notdefteri/icon.png",
       "sizes": "512x512"
     }
   ],
