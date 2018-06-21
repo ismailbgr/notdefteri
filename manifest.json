@@ -1,6 +1,6 @@
 {
   "name": "Şifreli Not Defteri",
-  "short_name": "ŞNot Defteri",
+  "short_name": "Not Defteri",
   "description": "Şifrelenmiş Bir Not Defteri",
   "lang": "tr-TR",
   "start_url": "/notdefteri",
