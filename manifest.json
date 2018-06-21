@@ -5,12 +5,12 @@
   "lang": "tr-TR",
   "start_url": "/notdefteri",
   "display": "standalone",
-  "theme_color": "#24f764",
+  "theme_color": "#A9A9A9",
   "icons": [
     {
       "src": "/notdefteri/icon.png",
       "sizes": "512x512"
     }
   ],
-  "background_color": "#24f764"
+  "background_color": "#D3D3D3"
 }

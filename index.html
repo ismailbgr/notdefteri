@@ -104,7 +104,7 @@ padding: 0px;
 <div class="content">
 	<h1>Not Defteri</h1>
 	<button onclick="add()">+</button>
-	<button onclick="setPass()">Şifre Koy/Kaldır/Değiştir</button>
+	<button onclick="openSettings()">...</button>
 
 <div id="notes">
 	
@@ -118,6 +118,13 @@ padding: 0px;
 </div>
 <textarea id="txtbox" rows="10" style="width: 90%"></textarea></br>
 </div>
+
+<div id="settings" class="gizli">
+	<h1>Ayarlar</h1>
+	<p><button onclick="closeSettings()">X</button></p>
+	<p><button onclick="setPass()">Şifre Koy/Kaldır/Değiştir</button></p>
+</div>
+
 
 </div>
 </div>
@@ -157,6 +164,15 @@ if(notesarray.length == 0){
 
 
 
+function openSettings() {
+	document.getElementById("settings").classList.remove("gizli")
+	document.getElementById("notes").classList.add("gizli")
+}
+
+function closeSettings() {
+	document.getElementById("settings").classList.add("gizli")
+	document.getElementById("notes").classList.remove("gizli")
+}
 
 
 function setPass() {
