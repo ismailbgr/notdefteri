@@ -242,7 +242,13 @@ function add(argument) {
 }
 
 function refresh(argument) {
+
+
 	notesdiv.innerHTML = ""
+
+if(notesarray.length == 0){
+	notesdiv.innerHTML = "Not Bulunamadı"
+}
 
 	for (var i = notesarray.length - 1; i >= 0; i--) {
 		
