@@ -1,4 +1,4 @@
-const expectedCaches = ['ibgr-notdefteri-v0.1'];
+const expectedCaches = ['ibgr-notdefteri-v0.0.1'];
 
 self.addEventListener('install', function(e) {
   self.skipWaiting();
